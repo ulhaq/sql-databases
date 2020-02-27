@@ -56,7 +56,7 @@ BEGIN
         ELSEIF (SELECT COUNT(*) FROM `course_trainee` INNER JOIN courses ON course_trainee.course_id=courses.id WHERE course_trainee.trainee_id=traineeId AND courses.remote=1) > 2 THEN
 			SELECT "This trainee is already enrolled in three online courses.";
         ELSE
-            INSERT INTO course_trainee VALUES (courseId, traineeId);
+            INSERT INTO course_trainee (course_id, trainee_id) VALUES (courseId, traineeId);
         END IF;
     ELSE
         SELECT "Can not add more than 100 trainees per course.";
